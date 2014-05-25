@@ -1,0 +1,8 @@
+value addPos = \ x y -> case x of
+      Zero -> y |
+      Succ x -> Succ (addPos x y)
+
+value main = Dialog (\ res -> Cons Read (Cons Read (case res of
+      Cons (ReadOK a) (Cons (ReadOK b) wild) -> Cons (Write (addPos a b)) Nil)))
+
+

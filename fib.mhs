@@ -1,0 +1,22 @@
+value fib = \ n -> case n of
+      Zero -> Zero |
+      Succ Zero -> Succ Zero |
+      n -> add (fib (minus n (Succ Zero)))
+               (fib (minus n (Succ (Succ Zero))))
+value main = Dialog ( \ resp ->
+		       	    Cons Read (case resp of
+			    	       	     Cons (ReadOK a) rest ->
+					     	  	    	Cons (Write (fib a)) Nil))
+
+value minus = \ x y -> case Pair x y of
+      Pair x Zero -> x |
+      Pair (Succ x2) (Succ y2) -> minus x2 y2
+
+value add = \ x y -> case Pair x y of
+      Pair x (Succ y2) -> add (Succ x) y2 |
+      Pair x Zero -> x
+
+value mul = \ x y -> case Pair x y of
+      Pair x (Succ y2) -> add x (mul x y2) |
+      Pair x (Succ Zero) -> x |
+      Pair x Zero -> Zero

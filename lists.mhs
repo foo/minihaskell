@@ -1,0 +1,31 @@
+value main = maptest
+value appendtest = append (Cons One (Cons Two Nil)) (Cons Three (Cons Four Nil))
+value reversetest = reverse (Cons One (Cons Two (Cons Three (Cons Four Nil))))
+value maptest = map succ (Cons One (Cons Two (Cons Three (Cons Four Nil))))
+
+value head = \ a -> case a of
+    Cons h tl -> h |
+    wild -> Error
+
+value tail = \a -> case a of
+    Cons h tl -> tl |
+    wild -> Error
+
+value append = \a b -> case a of
+    Cons h tl -> Cons h (append tl b) |
+    Nil -> b
+
+value reverse = \a -> case a of
+    Cons h tl -> append (reverse tl) (Cons h Nil) |
+    Nil -> Nil
+
+value map = \f l -> case l of
+    Cons h tl -> Cons (f h) (map f tl) |
+    Nil -> Nil
+
+value succ = \ a -> case a of
+    One -> Two   |
+    Two -> Three |
+    Three -> Four|
+    Four -> Five |
+    Five -> Infinity

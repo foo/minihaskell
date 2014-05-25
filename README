@@ -1,0 +1,16 @@
+Liczby naturalne są reprezentowane jako następniki zera:
+
+0 – Zero
+1 – Succ Zero
+2 – Succ (Succ Zero)
+3 – Succ (Succ (Succ Zero))
+itd.
+
+
+Wskazówki co do uruchomienia:
+Przykładowo uruchomię dodawanie dwóch liczb:
+$ runghc MiniHaskellInterpreter.hs „add.mhs”
+Succ Zero
+Succ (Succ (Succ Zero))
+Program powienien wypisać
+Succ[Succ[Succ[Succ[Zero]]]]
